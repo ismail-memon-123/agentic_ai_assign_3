@@ -1,0 +1,11 @@
+# Gemini SDK
+google-genai>=1.20.0
+
+# Numerical computing
+numpy>=1.26.0
+
+# Progress bars (used during ingestion)
+tqdm>=4.66.0
+
+# Environment variable support (.env file)
+python-dotenv>=1.0.1
