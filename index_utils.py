@@ -16,7 +16,9 @@ def initial(embedding_file="index/vectors.npy", chunks_file="index/metadata.json
     Load embeddings and document chunks
     """
     embeddings = np.load(embedding_file)
-
+    print("dimension")
+    print(embeddings[0])
+    print(len(embeddings[0]))
     with open(chunks_file, "r", encoding="utf-8") as f:
         chunks = json.load(f)
 
@@ -30,10 +32,16 @@ def search(chunks, embeddings, query_embedding, top_k=5):
     """
         Cosine similarity search
         """
+    print(query_embedding[0])
+    #print(len(query_embedding[0]))
+
 
     # normalize query vector
     query_embedding = query_embedding/np.linalg.norm(query_embedding)
 
+    print("query dimension")
+    print(query_embedding[0])
+    #print(len(query_embedding[0]))
 
     # cosine similarity
     scores = np.dot(
@@ -47,15 +55,17 @@ def search(chunks, embeddings, query_embedding, top_k=5):
     best_indices = np.argsort(scores)[::-1][:top_k]
 
     results = []
+    print("scores")
+    print(scores)
     print(best_indices)
     for idx in range(len(best_indices)):
         results.append({
-            "score": float(scores[idx]),
-            "text": chunks[idx]["text"],
+            "score": float(scores[best_indices[idx]]),
+            "text": chunks[best_indices[idx]]["text"],
             "id": idx
         })
 
-
+    print(results)
     return results
 
 def retrieve(question, top_k=5):
@@ -118,7 +128,7 @@ Question:
 Answer:
 
 """
-
+    print(prompt)
 
     return prompt
 
@@ -149,6 +159,7 @@ def main():
     answer = generate_answer(
         rag_prompt
     )
+    #answer = "fake ans"
 
 
     # 4. Print answer
