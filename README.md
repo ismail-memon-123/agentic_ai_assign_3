@@ -240,6 +240,7 @@ Responsible for
 Take a look at the screenshot, I made up a edm dj (slightly changed David Guetta's name and copied a part of an article about him
 with the changed name. When asked about the fake DJ the information from the article is presented and the sources cited).
 
+I also used chat gpt to generate a fake article about a fake country and asked questions about that.
 # Troubleshooting
 
 ## GEMINI_API_KEY not found
